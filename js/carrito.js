@@ -53,7 +53,15 @@ for (i = 0; i < divProductos.length; i++) {
     // console.log(unidadFrutaSel);
     // Montamos el onclick y llamamos a la función con los argumentos
     divProductos[i].setAttribute("onclick", `productoSeleccionado("${nombreFrutaSel}", ${importeFrutaSel}, "${unidadFrutaSel}")`)
-    console.log(divProductos[i].getElementsByTagName("img").setAttribute("aria-labelledby",`${nombreFrutaSel}-descrip`));
+    let imagenFruta = divProductos[i].getElementsByTagName('img')
+    console.log(imagenFruta)
+    let nombreFrutaAria = nombreFrutaSel.toLowerCase()
+    console.log(nombreFrutaAria);
+    imagenFruta.item(i).setAttribute("aria-labelledby", `${nombreFrutaAria}-descrip`)
+    let parrafoAriaDescript = divProductos[i].innerHTML
+    parrafoAriaDescript += `<p id="${nombreFrutaAria}-descrip">Has seleccionado ${nombreFrutaSel}, cuesta ${importeFrutaSel}, has cogido ${unidadFrutaSel} </p>`
+    console.log(parrafoAriaDescript);
+
 }
 
 // Hacemos la función que lee el evento del onclick de los <div> de las frutas
